@@ -16,11 +16,11 @@ export function useGameFlow() {
       timerRef.current = null;
     }
 
-    // Auto-deal after confirming bets
+    // Deal one card at a time, 1200ms apart, left-to-right each round then dealer
     if (state.phase === 'dealing') {
       timerRef.current = setTimeout(() => {
-        dispatch({ type: 'DEAL_INITIAL' });
-      }, 500);
+        dispatch({ type: 'DEAL_ONE_CARD' });
+      }, 900);
       return;
     }
 

@@ -16,7 +16,7 @@ export type GameAction =
   | { type: 'PLACE_BET'; amount: number }
   | { type: 'CLEAR_BET' }
   | { type: 'CONFIRM_BETS' }
-  | { type: 'DEAL_INITIAL' }
+  | { type: 'DEAL_ONE_CARD' }
   | { type: 'PLAYER_ACTION'; action: 'hit' | 'stand' | 'double' | 'split' }
   | { type: 'AI_PLAY_STEP' }
   | { type: 'DEALER_REVEAL' }
@@ -130,42 +130,71 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       return { ...state, phase: 'dealing', players: playersWithBets, message: 'Dealing...' };
     }
 
-    case 'DEAL_INITIAL': {
-      let shoe = [...state.shoe];
-      const players = state.players.map(p => ({ ...p }));
-      const dealer = { cards: [] as Card[] };
+    case 'DEAL_ONE_CARD': {
+      // Build ordered list of active players with their state indices
+      const activePlayers = state.players
+        .map((p, idx) => ({ player: p, idx }))
+        .filter(({ player }) => player.isActive && player.hands.length > 0);
 
-      // Deal 2 cards to each active player, then dealer
-      for (let round = 0; round < 2; round++) {
-        for (let i = 0; i < players.length; i++) {
-          if (!players[i].isActive || players[i].hands.length === 0) continue;
-          const result = drawCard(shoe, true);
-          shoe = result.shoe;
-          players[i] = {
-            ...players[i],
-            hands: players[i].hands.map((h, hi) =>
-              hi === 0 ? { ...h, cards: [...h.cards, result.card] } : h
-            ),
-          };
-        }
-        // Dealer card: second card face down
-        const dealerResult = drawCard(shoe, round === 0);
-        shoe = dealerResult.shoe;
-        dealer.cards.push(dealerResult.card);
+      const n = activePlayers.length;
+      const totalExpected = (n + 1) * 2; // each active player + dealer gets 2 cards
+
+      // Count how many cards have been dealt so far
+      const totalDealt = activePlayers.reduce(
+        (sum, { player }) => sum + player.hands[0].cards.length, 0
+      ) + state.dealer.cards.length;
+
+      // If all cards already dealt, transition to player-turn
+      if (totalDealt >= totalExpected) {
+        const firstActiveIdx = state.players.findIndex(p => p.isActive && p.hands.length > 0);
+        return { ...state, phase: 'player-turn', activePlayerIndex: firstActiveIdx, message: '' };
       }
 
-      // Find first active player (left to right)
-      const firstActiveIdx = players.findIndex(p => p.isActive && p.hands.length > 0);
+      // round 0 = first pass, round 1 = second pass
+      // posInRound 0..n-1 = player slot, posInRound n = dealer
+      const round = Math.floor(totalDealt / (n + 1));
+      const posInRound = totalDealt % (n + 1);
 
-      return {
-        ...state,
-        shoe,
-        players,
-        dealer,
-        phase: 'player-turn',
-        activePlayerIndex: firstActiveIdx,
-        message: '',
-      };
+      let shoe = [...state.shoe];
+      let newPlayers = state.players;
+      let newDealer = state.dealer;
+
+      if (posInRound < n) {
+        // Deal to the player at this position
+        const { player, idx } = activePlayers[posInRound];
+        const result = drawCard(shoe, true);
+        shoe = result.shoe;
+        const players = [...state.players];
+        players[idx] = {
+          ...player,
+          hands: player.hands.map((h, hi) =>
+            hi === 0 ? { ...h, cards: [...h.cards, result.card] } : h
+          ),
+        };
+        newPlayers = players;
+      } else {
+        // Deal to dealer: face up in round 0, face down (hole card) in round 1
+        const faceUp = round === 0;
+        const result = drawCard(shoe, faceUp);
+        shoe = result.shoe;
+        newDealer = { cards: [...state.dealer.cards, result.card] };
+      }
+
+      // If this was the last card, transition to player-turn immediately
+      if (totalDealt + 1 >= totalExpected) {
+        const firstActiveIdx = newPlayers.findIndex(p => p.isActive && p.hands.length > 0);
+        return {
+          ...state,
+          shoe,
+          players: newPlayers,
+          dealer: newDealer,
+          phase: 'player-turn',
+          activePlayerIndex: firstActiveIdx,
+          message: '',
+        };
+      }
+
+      return { ...state, shoe, players: newPlayers, dealer: newDealer };
     }
 
     case 'AI_PLAY_STEP': {
