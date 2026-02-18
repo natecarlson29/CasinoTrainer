@@ -1,0 +1,42 @@
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  padding: 10px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 80px;
+}
+
+.action-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.action-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.action-btn-optimal {
+  border-color: var(--hint-glow);
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.4), 0 0 4px rgba(0, 230, 118, 0.2);
+  animation: glowPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(0, 230, 118, 0.4), 0 0 4px rgba(0, 230, 118, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.6), 0 0 8px rgba(0, 230, 118, 0.3);
+  }
+}

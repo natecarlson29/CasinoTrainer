@@ -1,0 +1,76 @@
+.main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  gap: 48px;
+  padding: 40px;
+}
+
+.menu-header {
+  text-align: center;
+}
+
+.menu-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0 0 8px;
+  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.menu-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.menu-options {
+  display: flex;
+  gap: 24px;
+}
+
+.menu-card {
+  width: 220px;
+  padding: 36px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-card-active:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.menu-card-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.menu-card-icon {
+  font-size: 48px;
+}
+
+.menu-card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.menu-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+}

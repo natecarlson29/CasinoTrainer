@@ -1,0 +1,110 @@
+.chip-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  padding: 40px;
+  position: relative;
+}
+
+.cs-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.cs-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 24px;
+}
+
+.cs-message {
+  color: var(--accent-red);
+  font-size: 16px;
+  font-weight: 600;
+  background: rgba(239, 83, 80, 0.12);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.cs-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0;
+}
+
+.cs-subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: 0;
+}
+
+.cs-presets {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.cs-preset {
+  padding: 14px 28px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.cs-preset:hover {
+  border-color: var(--gold);
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.cs-preset-selected {
+  border-color: var(--gold);
+  background: rgba(255, 215, 0, 0.12);
+  color: var(--gold);
+}
+
+.cs-custom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cs-or {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.cs-input {
+  width: 180px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.cs-input:focus {
+  border-color: var(--gold);
+}
+
+.cs-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.cs-start {
+  margin-top: 16px;
+}

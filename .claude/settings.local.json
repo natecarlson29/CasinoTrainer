@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wizardofodds.com)",
+      "WebFetch(domain:www.blackjackapprenticeship.com)",
+      "Bash(npm create:*)",
+      "Bash(npx --yes create-vite@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(for f in src/components/cards/HandDisplay.tsx src/components/chips/BettingArea.tsx src/components/chips/Chip.tsx src/components/controls/ActionButtons.tsx src/components/controls/StrategyHint.tsx src/components/layout/MainMenu.tsx src/components/table/DealerArea.tsx src/components/table/PlayerSeat.tsx src/components/table/Table.tsx src/components/cards/Card.tsx)",
+      "Bash(do sed -i \"/^import React from ''react'';$/d\" \"$f\")",
+      "Bash(done)",
+      "Bash(npm run dev:*)"
+    ]
+  }
+}

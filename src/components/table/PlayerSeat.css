@@ -1,0 +1,138 @@
+.player-seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 160px;
+  min-height: 200px;
+  padding: 10px;
+  border-radius: 12px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.player-seat-empty {
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-seat-active {
+  box-shadow: 0 0 16px 4px rgba(0, 230, 118, 0.35);
+}
+
+.player-seat-human {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.seat-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.seat-chips {
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.seat-hands {
+  display: flex;
+  gap: 12px;
+}
+
+.seat-hand-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.seat-bet {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+.seat-result {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 4px;
+  animation: popIn 0.3s ease;
+}
+
+.result-win {
+  color: #4caf50;
+  background: rgba(76, 175, 80, 0.15);
+}
+
+.result-lose {
+  color: #ef5350;
+  background: rgba(239, 83, 80, 0.15);
+}
+
+.result-push {
+  color: #ffb74d;
+  background: rgba(255, 183, 77, 0.15);
+}
+
+.btn-add-player {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add-player:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-remove-player {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(239, 83, 80, 0.6);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  line-height: 1;
+}
+
+.btn-remove-player:hover {
+  background: rgba(239, 83, 80, 0.9);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

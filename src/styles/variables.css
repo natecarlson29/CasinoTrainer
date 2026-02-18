@@ -1,0 +1,39 @@
+:root {
+  /* Table */
+  --felt-green: #1a6b1a;
+  --felt-dark: #0d4d0d;
+  --felt-light: #1e7e1e;
+  --wood-brown: #3d1c00;
+  --wood-light: #5c3010;
+
+  /* Cards */
+  --card-width: 72px;
+  --card-height: 100px;
+  --card-radius: 6px;
+  --card-red: #cc1111;
+  --card-black: #111111;
+  --card-back: #1a237e;
+  --card-back-accent: #283593;
+
+  /* Chips */
+  --chip-size: 44px;
+  --chip-red: #cc2222;
+  --chip-green: #228B22;
+  --chip-black: #1a1a1a;
+  --chip-purple: #6a1b9a;
+
+  /* UI */
+  --gold: #ffd700;
+  --gold-dark: #b8960f;
+  --bg-dark: #0a0a0a;
+  --bg-card: #1a1a2e;
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --accent-blue: #1e88e5;
+  --accent-green: #43a047;
+  --accent-red: #e53935;
+  --hint-glow: #00e676;
+
+  /* Spacing */
+  --seat-gap: 20px;
+}
