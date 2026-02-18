@@ -108,3 +108,27 @@
 .card-deal {
   animation: dealIn 0.3s ease-out;
 }
+
+@media (max-width: 480px) {
+  .card-rank {
+    font-size: 10px;
+  }
+
+  .card-suit-small {
+    font-size: 9px;
+  }
+
+  .card-suit-large {
+    font-size: 20px;
+  }
+
+  .card-corner-top {
+    top: 2px;
+    left: 3px;
+  }
+
+  .card-corner-bottom {
+    bottom: 2px;
+    right: 3px;
+  }
+}

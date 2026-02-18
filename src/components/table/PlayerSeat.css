@@ -136,3 +136,25 @@
     transform: scale(1);
   }
 }
+
+@media (max-width: 480px) {
+  .player-seat {
+    min-width: 0;
+    flex: 1;
+    min-height: 140px;
+    padding: 6px 4px;
+    gap: 4px;
+  }
+
+  .player-seat-empty {
+    min-height: 140px;
+  }
+
+  .seat-name {
+    font-size: 11px;
+  }
+
+  .seat-chips {
+    font-size: 10px;
+  }
+}

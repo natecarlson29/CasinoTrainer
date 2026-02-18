@@ -37,3 +37,12 @@
   /* Spacing */
   --seat-gap: 20px;
 }
+
+@media (max-width: 480px) {
+  :root {
+    --card-width: 48px;
+    --card-height: 68px;
+    --chip-size: 36px;
+    --seat-gap: 6px;
+  }
+}

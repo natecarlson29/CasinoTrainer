@@ -114,3 +114,27 @@
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+@media (max-width: 480px) {
+  .table-felt {
+    height: auto;
+    min-height: 420px;
+    border-radius: 40px 40px 16px 16px;
+    border-width: 6px;
+    padding: 16px 8px 16px;
+    gap: 10px;
+  }
+
+  .table-header {
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .my-bankroll {
+    font-size: 14px;
+  }
+
+  .my-bankroll-amount {
+    font-size: 17px;
+  }
+}

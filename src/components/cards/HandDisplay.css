@@ -32,3 +32,9 @@
 .hand-active {
   filter: drop-shadow(0 0 8px var(--hint-glow));
 }
+
+@media (max-width: 480px) {
+  .hand-cards {
+    padding: 4px 6px;
+  }
+}

@@ -40,3 +40,15 @@
     box-shadow: 0 0 20px rgba(0, 230, 118, 0.6), 0 0 8px rgba(0, 230, 118, 0.3);
   }
 }
+
+@media (max-width: 480px) {
+  .action-buttons {
+    gap: 6px;
+  }
+
+  .action-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+    min-width: 64px;
+  }
+}

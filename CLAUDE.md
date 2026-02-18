@@ -13,6 +13,38 @@ This document describes how the blackjack section of the app is structured and h
 
 ---
 
+## Mobile-First CSS Rules
+
+This app targets both desktop and iPhone (primary mobile target). Every CSS file must account for small screens.
+
+**Breakpoint:** `@media (max-width: 480px)` is the standard mobile breakpoint used throughout the project.
+
+**Rules for all new CSS:**
+- Design for mobile first — assume the layout must work at 375px wide (iPhone SE/14)
+- Add a `@media (max-width: 480px)` block to every new `.css` file that contains layout, sizing, or typography
+- Never use fixed `width` or `height` values without a mobile override; prefer `max-width`, `min-width: 0`, `flex: 1`, or `auto` where possible
+- Avoid fixed pixel heights on containers that hold dynamic content (use `min-height` + `height: auto` instead)
+- Horizontal flex rows with multiple children must either wrap (`flex-wrap: wrap`) or shrink gracefully on mobile
+
+**Responsive size tokens (defined in `src/styles/variables.css`):**
+
+| Token | Desktop | Mobile (≤480px) |
+|---|---|---|
+| `--card-width` | 72px | 48px |
+| `--card-height` | 100px | 68px |
+| `--chip-size` | 44px | 36px |
+| `--seat-gap` | 20px | 6px |
+
+When adding new size tokens to `variables.css`, include a mobile override in the `@media (max-width: 480px)` block at the bottom of that file.
+
+**Common mobile patterns already in use:**
+- Player seats: `min-width: 0; flex: 1` so three seats share the row equally
+- Menu cards: `flex-direction: column` to stack vertically instead of side-by-side
+- Chip row: `flex-wrap: wrap; justify-content: center` so chips wrap to a second line
+- Table felt: `height: auto; min-height` instead of a fixed height; reduced border and padding
+
+---
+
 ## Directory Structure (src/)
 
 ```
